@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import {supabase} from "./supabaseClient";
+import { supabase } from "./supabaseClient";
+
 function MessageForm() {
   let [content, setContent] = useState("");
 
@@ -9,7 +10,12 @@ function MessageForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    supabase.from("messages").insert([{content:content}]).then(function());
+    supabase
+      .from("messages")
+      .insert([{ content: content }])
+      .then(function () {
+        console.log("That worked");
+      });
   }
 
   return (
